@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/schoolkids"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/grinchedregular"
+        android:text="Valitse vaikeusaste"
+        android:textColor="#F3EF0F"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonEasy"
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#08FF12"
+        android:text="Helppo"
+        app:cornerRadius="2mm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonMid"
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#E8D20C"
+        android:text="Keskivaikea"
+        app:cornerRadius="2mm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEasy" />
+
+    <Button
+        android:id="@+id/buttonHard"
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#F60707"
+        android:text="Vaikea"
+        app:cornerRadius="2mm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMid" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
