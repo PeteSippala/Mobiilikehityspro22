@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
+import kotlin.math.round
 
 class EasyGameActivity : AppCompatActivity() {
 
@@ -23,10 +24,11 @@ class EasyGameActivity : AppCompatActivity() {
     var button3 :Button? = null
     var countDownTimer :CountDownTimer? = null
     var random :Random = Random
-    var a = 0
-    var b = 0
+    var a = 0.0
+    var b = 0.0
+
     var indexOfCorrectAnswer = 0
-    var answers = ArrayList<Int>()
+    var answers = ArrayList<Double>()
     var points = 0
     var totalQuestions = 0
     var cals = ""
@@ -51,9 +53,11 @@ class EasyGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextInt(10)
-        b = random.nextInt(10)
-        QuestionTextText!!.text="$a $cal $b"
+        a = random.nextDouble(10.0)
+        b = random.nextDouble(10.0)
+        val RA: Double = String.format("%.1f",a).toDouble()
+        val RB: Double = String.format("%.1f",b).toDouble()
+        QuestionTextText!!.text="$RA $cal $RB"
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
@@ -77,7 +81,7 @@ class EasyGameActivity : AppCompatActivity() {
                 }
             }
             else{
-                var wrongAnswer = random.nextInt(20)
+                var wrongAnswer = random.nextDouble(20.0)
                 try{
                     while(
                         wrongAnswer == a+b
@@ -85,7 +89,7 @@ class EasyGameActivity : AppCompatActivity() {
                         || wrongAnswer == a*b
                         || wrongAnswer == a/b
                     ){
-                        wrongAnswer =random.nextInt(20)
+                        wrongAnswer =random.nextDouble(20.0)
                     }
                     answers.add(wrongAnswer)
                 }
