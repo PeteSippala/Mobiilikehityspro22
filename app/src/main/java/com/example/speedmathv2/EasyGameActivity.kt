@@ -26,7 +26,6 @@ class EasyGameActivity : AppCompatActivity() {
     var random :Random = Random
     var a = 0.0
     var b = 0.0
-
     var indexOfCorrectAnswer = 0
     var answers = ArrayList<Double>()
     var points = 0
@@ -91,7 +90,8 @@ class EasyGameActivity : AppCompatActivity() {
                     ){
                         wrongAnswer =random.nextDouble(20.0)
                     }
-                    answers.add(wrongAnswer)
+                    val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
+                    answers.add(WA)
                 }
                 catch (e:Exception){
                     e.printStackTrace()
