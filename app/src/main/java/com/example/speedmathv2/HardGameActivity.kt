@@ -1,5 +1,6 @@
 package com.example.speedmathv2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
 import kotlin.math.round
 
-class EasyGameActivity : AppCompatActivity() {
+class HardGameActivity : AppCompatActivity() {
 
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
@@ -33,7 +34,7 @@ class EasyGameActivity : AppCompatActivity() {
     var cals = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_easy_game)
+        setContentView(R.layout.activity_hard_game)
         val calInt = intent.getStringExtra("cals")
         cals = calInt!!
         AikaTextView = findViewById(R.id.AikaTextView)
@@ -52,8 +53,8 @@ class EasyGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextDouble(10.0)
-        b = random.nextDouble(10.0)
+        a = random.nextDouble(50.0)
+        b = random.nextDouble(50.0)
         val RA: Double = String.format("%.1f",a).toDouble()
         val RB: Double = String.format("%.1f",b).toDouble()
         QuestionTextText!!.text="$RA $cal $RB"
@@ -65,12 +66,8 @@ class EasyGameActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-                    "+"->{answers.add(RA+RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
-                    "-"->{answers.add(RA-RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
+                    "+"->{answers.add(a+b)}
+                    "-"->{answers.add(a-b)}
                     "*"->{answers.add(a*b)}
                     "÷"->{
                         try {
@@ -165,5 +162,8 @@ class EasyGameActivity : AppCompatActivity() {
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()
-    }
-}
+        buttonBack.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }}
