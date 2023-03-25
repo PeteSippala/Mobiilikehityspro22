@@ -122,15 +122,16 @@ class MidGameActivity : AppCompatActivity() {
             AlertTextView!!.text = "Correct"
         }
         else{
+            points--
             AlertTextView!!.text = "Wrong"
         }
-        PisteTextView!!.text = "$points/$totalQuestions"
+        PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
-        PisteTextView!!.text = "$points/$totalQuestions"
+        PisteTextView!!.text = "$points"
         countDownTimer!!.start()
     }
 
@@ -157,7 +158,7 @@ class MidGameActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
         dialog.setCancelable(false)
         dialog.setView(winDialog)
-        lopputulosTextView!!.text ="$points/$totalQuestions"
+        lopputulosTextView!!.text ="$points"
         buttonPlayAgain.setOnClickListener { PlayAgain(it) }
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
