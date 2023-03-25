@@ -1,4 +1,4 @@
-package com.example.speedmath
+package com.example.speedmathv2
 
 import org.junit.Test
 
