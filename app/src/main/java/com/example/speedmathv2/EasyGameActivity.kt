@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
@@ -40,6 +41,7 @@ class EasyGameActivity : AppCompatActivity() {
         QuestionTextText = findViewById(R.id.QuestionTextText)
         PisteTextView = findViewById(R.id.PisteTextView)
         AlertTextView = findViewById(R.id.AlertTextView)
+
 
         button0 = findViewById(R.id.button0)
         button1 = findViewById(R.id.button1)
@@ -120,9 +122,9 @@ class EasyGameActivity : AppCompatActivity() {
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
-
             points++
             AlertTextView!!.text = "Correct"
+
         }
         else{
             points--

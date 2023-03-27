@@ -12,14 +12,22 @@
     tools:context=".MidActivity">
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SpeedMath"
+        android:textAlignment="center"
+        android:textSize="48sp" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="SpeedMath"
+        android:text="Valitse plus, miinus, kerto tai jako"
         android:textAlignment="center"
 
         android:textColor="#555555"
-        android:textSize="36sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -28,19 +28,5 @@ class EasyActivity : AppCompatActivity() {
             calInt.putExtra("cals","-")
             startActivity(calInt)
         }
-        binding.kerto.setOnClickListener{
-            val calInt = Intent(this@EasyActivity,
-                EasyGameActivity::class.java)
-
-            calInt.putExtra("cals","*")
-            startActivity(calInt)
-        }
-        binding.jako.setOnClickListener{
-            val calInt = Intent(this@EasyActivity,
-                EasyGameActivity::class.java)
-
-            calInt.putExtra("cals","÷")
-            startActivity(calInt)
-        }
     }
 }
