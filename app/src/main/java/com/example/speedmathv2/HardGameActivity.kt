@@ -1,33 +1,18 @@
 package com.example.speedmathv2
 
-<<<<<<< Updated upstream
 import android.content.Intent
-=======
->>>>>>> Stashed changes
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-<<<<<<< Updated upstream
-=======
-import android.widget.ImageView
->>>>>>> Stashed changes
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
 import kotlin.math.round
 
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:app/src/main/java/com/example/speedmathv2/EasyGameActivity.kt
-class EasyGameActivity : AppCompatActivity() {
-========
-class MidGameActivity : AppCompatActivity() {
->>>>>>>> Stashed changes:app/src/main/java/com/example/speedmathv2/MidGameActivity.kt
-=======
-class EasyGameActivity : AppCompatActivity() {
->>>>>>> Stashed changes
+class HardGameActivity : AppCompatActivity() {
 
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
@@ -49,15 +34,7 @@ class EasyGameActivity : AppCompatActivity() {
     var cals = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:app/src/main/java/com/example/speedmathv2/EasyGameActivity.kt
-        setContentView(R.layout.activity_easy_game)
-========
-        setContentView(R.layout.activity_mid_game)
->>>>>>>> Stashed changes:app/src/main/java/com/example/speedmathv2/MidGameActivity.kt
-=======
-        setContentView(R.layout.activity_easy_game)
->>>>>>> Stashed changes
+        setContentView(R.layout.activity_hard_game)
         val calInt = intent.getStringExtra("cals")
         cals = calInt!!
         AikaTextView = findViewById(R.id.AikaTextView)
@@ -65,10 +42,6 @@ class EasyGameActivity : AppCompatActivity() {
         PisteTextView = findViewById(R.id.PisteTextView)
         AlertTextView = findViewById(R.id.AlertTextView)
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         button0 = findViewById(R.id.button0)
         button1 = findViewById(R.id.button1)
         button2 = findViewById(R.id.button2)
@@ -80,13 +53,8 @@ class EasyGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-<<<<<<< Updated upstream
-        a = random.nextDouble(20.0)
-        b = random.nextDouble(20.0)
-=======
-        a = random.nextDouble(10.0)
-        b = random.nextDouble(10.0)
->>>>>>> Stashed changes
+        a = random.nextDouble(50.0)
+        b = random.nextDouble(50.0)
         val RA: Double = String.format("%.1f",a).toDouble()
         val RB: Double = String.format("%.1f",b).toDouble()
         QuestionTextText!!.text="$RA $cal $RB"
@@ -98,17 +66,8 @@ class EasyGameActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-<<<<<<< Updated upstream
                     "+"->{answers.add(a+b)}
                     "-"->{answers.add(a-b)}
-=======
-                    "+"->{answers.add(RA+RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
-                    "-"->{answers.add(RA-RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
->>>>>>> Stashed changes
                     "*"->{answers.add(a*b)}
                     "÷"->{
                         try {
@@ -158,15 +117,9 @@ class EasyGameActivity : AppCompatActivity() {
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
-<<<<<<< Updated upstream
 
             points++
             AlertTextView!!.text = "Correct"
-=======
-            points++
-            AlertTextView!!.text = "Correct"
-
->>>>>>> Stashed changes
         }
         else{
             points--
@@ -210,12 +163,8 @@ class EasyGameActivity : AppCompatActivity() {
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()
-<<<<<<< Updated upstream
         buttonBack.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-=======
->>>>>>> Stashed changes
-    }
-}
+    }}

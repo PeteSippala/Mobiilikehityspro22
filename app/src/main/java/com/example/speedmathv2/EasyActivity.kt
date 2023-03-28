@@ -28,6 +28,7 @@ class EasyActivity : AppCompatActivity() {
             calInt.putExtra("cals","-")
             startActivity(calInt)
         }
+<<<<<<< Updated upstream
         binding.kerto.setOnClickListener{
             val calInt = Intent(this@EasyActivity,
                 EasyGameActivity::class.java)
@@ -42,5 +43,7 @@ class EasyActivity : AppCompatActivity() {
             calInt.putExtra("cals","÷")
             startActivity(calInt)
         }
+=======
+>>>>>>> Stashed changes
     }
 }
