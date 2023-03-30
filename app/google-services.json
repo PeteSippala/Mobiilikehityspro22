@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "605074595931",
+    "project_id": "speedmathv2",
+    "storage_bucket": "speedmathv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605074595931:android:363fe0c621bf3564de9f7e",
+        "android_client_info": {
+          "package_name": "com.example.speedmathv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605074595931-47pe0gs05kk5j8lgc2gj5ho8uinnn31u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.speedmathv2",
+            "certificate_hash": "5df6714a4a351bfe399b02947003bb17429b425a"
+          }
+        },
+        {
+          "client_id": "605074595931-f6oep9lblb1qc7ccacbsn6c77ari5kq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBob5mP6jchjgyro10Ry1px44HJEtDBy_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605074595931-25nb0e7e30ker1e28ed540i36fstbsab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

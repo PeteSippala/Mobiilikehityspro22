@@ -1,4 +1,4 @@
-package com.example.speedmath
+package com.example.speedmathv2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,11 +6,13 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
+import kotlin.math.round
 
-class MainActivity : AppCompatActivity() {
+class EasyGameActivity : AppCompatActivity() {
 
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
@@ -23,22 +25,23 @@ class MainActivity : AppCompatActivity() {
     var button3 :Button? = null
     var countDownTimer :CountDownTimer? = null
     var random :Random = Random
-    var a = 0
-    var b = 0
+    var a = 0.0
+    var b = 0.0
     var indexOfCorrectAnswer = 0
-    var answers = ArrayList<Int>()
+    var answers = ArrayList<Double>()
     var points = 0
     var totalQuestions = 0
     var cals = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_easy_game)
         val calInt = intent.getStringExtra("cals")
         cals = calInt!!
         AikaTextView = findViewById(R.id.AikaTextView)
         QuestionTextText = findViewById(R.id.QuestionTextText)
         PisteTextView = findViewById(R.id.PisteTextView)
         AlertTextView = findViewById(R.id.AlertTextView)
+
 
         button0 = findViewById(R.id.button0)
         button1 = findViewById(R.id.button1)
@@ -51,9 +54,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextInt(10)
-        b = random.nextInt(10)
-        QuestionTextText!!.text="$a $cal $b"
+        a = random.nextDouble(10.0)
+        b = random.nextDouble(10.0)
+        val RA: Double = String.format("%.1f",a).toDouble()
+        val RB: Double = String.format("%.1f",b).toDouble()
+        QuestionTextText!!.text="$RA $cal $RB"
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
@@ -62,22 +67,26 @@ class MainActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-                    "+"->{answers.add(a+b)}
-                    "-"->{answers.add(a-b)}
+                    "+"->{answers.add(RA+RB)
+                        val RA: Double = String.format("%.1f",a).toDouble()
+                        val RB: Double = String.format("%.1f",b).toDouble()}
+                    "-"->{answers.add(RA-RB)
+                        val RA: Double = String.format("%.1f",a).toDouble()
+                        val RB: Double = String.format("%.1f",b).toDouble()}
                     "*"->{answers.add(a*b)}
                     "÷"->{
-                    try {
-                        answers.add(a/b)
-                    }
-                    catch (e:java.lang.Exception){
-                    e.printStackTrace()
-                    }
+                        try {
+                            answers.add(a/b)
+                        }
+                        catch (e:java.lang.Exception){
+                            e.printStackTrace()
+                        }
                     }
 
                 }
             }
             else{
-                var wrongAnswer = random.nextInt(20)
+                var wrongAnswer = random.nextDouble(20.0)
                 try{
                     while(
                         wrongAnswer == a+b
@@ -85,15 +94,16 @@ class MainActivity : AppCompatActivity() {
                         || wrongAnswer == a*b
                         || wrongAnswer == a/b
                     ){
-                        wrongAnswer =random.nextInt(20)
+                        wrongAnswer =random.nextDouble(20.0)
                     }
-                    answers.add(wrongAnswer)
+                    val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
+                    answers.add(WA)
                 }
                 catch (e:Exception){
                     e.printStackTrace()
                 }
 
-        }
+            }
 
 
         }
@@ -112,26 +122,27 @@ class MainActivity : AppCompatActivity() {
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
-
             points++
             AlertTextView!!.text = "Correct"
+
         }
         else{
+            points--
             AlertTextView!!.text = "Wrong"
         }
-        PisteTextView!!.text = "$points/$totalQuestions"
+        PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
-        PisteTextView!!.text = "$points/$totalQuestions"
+        PisteTextView!!.text = "$points"
         countDownTimer!!.start()
     }
 
     private fun start() {
         NextQuestion(cals)
-        countDownTimer = object :CountDownTimer(30000,1000){
+        countDownTimer = object :CountDownTimer(60000,1000){
             override fun onTick(p0: Long) {
                 AikaTextView!!.text = (p0 / 1000).toString()+"s"
             }
@@ -145,14 +156,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun openDilog() {
         val inflate = LayoutInflater.from(this)
-        val winDialog = inflate.inflate(R.layout.tulos_layout,null)
+        val winDialog = inflate.inflate(R.layout.activity_tulos,null)
         lopputulosTextView = winDialog.findViewById(R.id.lopputulosTextView)
         val buttonPlayAgain = winDialog.findViewById<Button>(R.id.ButtonPlayAgain)
         val buttonBack = winDialog.findViewById<Button>(R.id.ButtonBack)
         val dialog = AlertDialog.Builder(this)
         dialog.setCancelable(false)
         dialog.setView(winDialog)
-        lopputulosTextView!!.text ="$points/$totalQuestions"
+        lopputulosTextView!!.text ="$points"
         buttonPlayAgain.setOnClickListener { PlayAgain(it) }
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
