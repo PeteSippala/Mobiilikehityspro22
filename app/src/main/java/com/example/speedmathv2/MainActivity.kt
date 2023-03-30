@@ -32,5 +32,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             Toast.makeText(this, "Vaikea valittu", Toast.LENGTH_SHORT).show()
         }
+        val hardcorebutton: Button = findViewById(R.id.buHardcore)
+            hardcorebutton.setOnClickListener{
+                val intent = Intent(this, HardcoreActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Hardcore valittu!", Toast.LENGTH_SHORT).show()
+        }
     }
 }

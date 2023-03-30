@@ -16,6 +16,12 @@
         android:theme="@style/Theme.SpeedMathv2"
         tools:targetApi="31">
         <activity
+            android:name=".HardcoreGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HardcoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".MidGameActivity"
             android:exported="false" />
         <activity

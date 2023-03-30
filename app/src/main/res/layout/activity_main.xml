@@ -62,5 +62,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMid" />
 
+    <Button
+        android:id="@+id/buHardcore"
+        android:layout_width="156dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="145dp"
+        android:backgroundTint="#c90d18"
+        android:fontFamily="@font/grinchedregular"
+        android:text="Hardcore"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHard"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
