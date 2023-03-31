@@ -12,6 +12,12 @@
     tools:context=".HardcoreActivity">
 
     <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,6 +81,15 @@
             android:src="@drawable/jako" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="3 väärin = häviö"
+        android:textAlignment="center"
+        android:textColor="#F60202"
+        android:textSize="24sp" />
 
 
 </LinearLayout>

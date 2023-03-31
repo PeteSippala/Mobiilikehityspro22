@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlin.random.Random
 import kotlin.math.round
+import kotlin.system.exitProcess
 
 class HardcoreGameActivity : AppCompatActivity() {
 
@@ -28,6 +30,7 @@ class HardcoreGameActivity : AppCompatActivity() {
     var a = 0.0
     var b = 0.0
     var indexOfCorrectAnswer = 0
+    var wrongAnswers = 0
     var answers = ArrayList<Double>()
     var points = 0
     var totalQuestions = 0
@@ -114,20 +117,27 @@ class HardcoreGameActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
-
             points++
             AlertTextView!!.text = "Correct"
+
         }
         else{
             points--
+            wrongAnswers++
             AlertTextView!!.text = "Wrong"
+        }
+        if (wrongAnswers >= 3){
+            AikaTextView!!.text = "väärin!"
+            openDilog()
         }
         PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
+
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
@@ -146,12 +156,13 @@ class HardcoreGameActivity : AppCompatActivity() {
                 AikaTextView!!.text = "Aika Loppui!"
                 openDilog()
             }
+
         }.start()
     }
 
     private fun openDilog() {
         val inflate = LayoutInflater.from(this)
-        val winDialog = inflate.inflate(R.layout.activity_tulos,null)
+        val winDialog = inflate.inflate(R.layout.activity_tulos_hardcore,null)
         lopputulosTextView = winDialog.findViewById(R.id.lopputulosTextView)
         val buttonPlayAgain = winDialog.findViewById<Button>(R.id.ButtonPlayAgain)
         val buttonBack = winDialog.findViewById<Button>(R.id.ButtonBack)
@@ -159,7 +170,9 @@ class HardcoreGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
-        buttonPlayAgain.setOnClickListener { PlayAgain(it) }
+        buttonPlayAgain.setOnClickListener {
+            PlayAgain(it)
+        }
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()

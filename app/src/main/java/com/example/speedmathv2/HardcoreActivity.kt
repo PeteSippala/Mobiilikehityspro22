@@ -19,7 +19,7 @@ class HardcoreActivity : AppCompatActivity() {
         binding.plus.setOnClickListener {
             val calInt = Intent(
                 this@HardcoreActivity,
-                HardGameActivity::class.java
+                HardcoreGameActivity::class.java
             )
 
             calInt.putExtra("cals", "+")
@@ -28,7 +28,7 @@ class HardcoreActivity : AppCompatActivity() {
         binding.miinus.setOnClickListener {
             val calInt = Intent(
                 this@HardcoreActivity,
-                HardGameActivity::class.java
+                HardcoreGameActivity::class.java
             )
 
             calInt.putExtra("cals", "-")
@@ -37,7 +37,7 @@ class HardcoreActivity : AppCompatActivity() {
         binding.kerto.setOnClickListener {
             val calInt = Intent(
                 this@HardcoreActivity,
-                HardGameActivity::class.java
+                HardcoreGameActivity::class.java
             )
 
             calInt.putExtra("cals", "*")
@@ -46,7 +46,7 @@ class HardcoreActivity : AppCompatActivity() {
         binding.jako.setOnClickListener {
             val calInt = Intent(
                 this@HardcoreActivity,
-                HardGameActivity::class.java
+                HardcoreGameActivity::class.java
             )
 
             calInt.putExtra("cals", "÷")
