@@ -177,6 +177,16 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+        if (points > 15) {
+            if (!this::mediaPlayer.isInitialized) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
+            }
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
+            mediaPlayer.start()
+        }
 
         buttonPlayAgain.setOnClickListener { PlayAgain(it) }
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
