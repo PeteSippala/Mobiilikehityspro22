@@ -1,6 +1,7 @@
 package com.example.speedmathv2
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -35,6 +36,7 @@ class HardcoreGameActivity : AppCompatActivity() {
     var points = 0
     var totalQuestions = 0
     var cals = ""
+    private lateinit var mediaPlayer: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hardcore_game)
@@ -170,6 +172,16 @@ class HardcoreGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
+        if (points < 5) {
+            if (!this::mediaPlayer.isInitialized) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.circus)
+            }
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
+            mediaPlayer.start()
+        }
         buttonPlayAgain.setOnClickListener {
             PlayAgain(it)
         }
