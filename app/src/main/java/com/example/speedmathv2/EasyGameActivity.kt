@@ -27,10 +27,10 @@ class EasyGameActivity : AppCompatActivity() {
     var button3 :Button? = null
     var countDownTimer :CountDownTimer? = null
     var random :Random = Random
-    var a = 0.0
-    var b = 0.0
+    var a = 0
+    var b = 0
     var indexOfCorrectAnswer = 0
-    var answers = ArrayList<Double>()
+    var answers = ArrayList<Int>()
     var points = 0
     var totalQuestions = 0
     var cals = ""
@@ -57,11 +57,9 @@ class EasyGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextDouble(10.0)
-        b = random.nextDouble(10.0)
-        val RA: Double = String.format("%.1f",a).toDouble()
-        val RB: Double = String.format("%.1f",b).toDouble()
-        QuestionTextText!!.text="$RA $cal $RB"
+        a = random.nextInt(50)
+        b = random.nextInt(50)
+        QuestionTextText!!.text="$a $cal $b"
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
@@ -70,37 +68,20 @@ class EasyGameActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-                    "+"->{answers.add(RA+RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
-                    "-"->{answers.add(RA-RB)
-                        val RA: Double = String.format("%.1f",a).toDouble()
-                        val RB: Double = String.format("%.1f",b).toDouble()}
-                    "*"->{answers.add(a*b)}
-                    "÷"->{
-                        try {
-                            answers.add(a/b)
-                        }
-                        catch (e:java.lang.Exception){
-                            e.printStackTrace()
-                        }
-                    }
-
+                    "+"->{answers.add(a+b) }
+                    "-"->{answers.add(a-b) }
                 }
             }
             else{
-                var wrongAnswer = random.nextDouble(20.0)
+                var wrongAnswer = random.nextInt(100)
                 try{
                     while(
                         wrongAnswer == a+b
                         || wrongAnswer == a-b
-                        || wrongAnswer == a*b
-                        || wrongAnswer == a/b
                     ){
-                        wrongAnswer =random.nextDouble(20.0)
+                        wrongAnswer =random.nextInt(100)
                     }
-                    val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
-                    answers.add(WA)
+                    answers.add(wrongAnswer)
                 }
                 catch (e:Exception){
                     e.printStackTrace()
