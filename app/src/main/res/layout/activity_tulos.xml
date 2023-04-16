@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:background="#4CAF50"
+        android:background="#FFC107"
         android:text="0"
         android:textColor="#F4F0F0"
         android:textSize="32sp" />
@@ -40,21 +40,23 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/ButtonPlayAgain"
-            android:layout_margin="10dp"
-            android:text="Pelaa uudelleen"
-            android:textAllCaps="false"
-            android:backgroundTint="#FF1B69"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#FD5208"
+            android:text="Pelaa uudelleen"
+            android:textAllCaps="false" />
+
         <Button
             android:id="@+id/ButtonBack"
-            android:layout_margin="10dp"
-            android:text="Poistu"
-            android:textAllCaps="false"
-            android:backgroundTint="#1189BF"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#0883EE"
+            android:text="Poistu"
+            android:textAllCaps="false" />
     </LinearLayout>
 </LinearLayout>

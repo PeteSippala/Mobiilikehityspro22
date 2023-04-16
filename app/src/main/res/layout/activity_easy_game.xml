@@ -14,7 +14,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="46dp"
         android:layout_marginBottom="29dp"
-        android:backgroundTint="#39F317"
+        android:backgroundTint="#D81B60"
         android:onClick="optionselect"
         android:tag="0"
         android:text="Button"
@@ -31,7 +31,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="29dp"
-        android:backgroundTint="#F6072C"
+        android:backgroundTint="#FD5208"
         android:onClick="optionselect"
         android:tag="1"
         android:text="Button"
@@ -50,7 +50,7 @@
         android:layout_marginTop="29dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="218dp"
-        android:backgroundTint="#0B42E1"
+        android:backgroundTint="#FFC107"
         android:onClick="optionselect"
         android:tag="2"
         android:text="Button"
@@ -69,7 +69,7 @@
         android:layout_marginTop="29dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="218dp"
-        android:backgroundTint="#FFEB3B"
+        android:backgroundTint="#0883EE"
         android:onClick="optionselect"
         android:tag="3"
         android:text="Button"
@@ -77,10 +77,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button1"
 
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
 
     <TextView
         android:id="@+id/PisteTextView"
@@ -88,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="28dp"
-        android:background="#4CAF50"
+        android:background="#06B999"
         android:padding="10dp"
         android:text="0"
         android:textColor="#F4F0F0"
@@ -106,25 +105,25 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.207" />
+        app:layout_constraintVertical_bias="0.218" />
+
     <TextView
         android:id="@+id/AikaTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
         android:layout_marginTop="72dp"
-        android:background="#FF9800"
+        android:background="#BF12F7"
         android:padding="10dp"
         android:text="30s"
-        android:textSize="30sp"
         android:textColor="#FDFCFC"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/AlertTextView"
         android:layout_width="wrap_content"
