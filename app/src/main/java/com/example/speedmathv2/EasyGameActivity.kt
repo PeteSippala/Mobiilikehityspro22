@@ -126,7 +126,7 @@ class EasyGameActivity : AppCompatActivity() {
 
     private fun start() {
         NextQuestion(cals)
-        countDownTimer = object :CountDownTimer(10000,1000){
+        countDownTimer = object :CountDownTimer(60000,1000){
             override fun onTick(p0: Long) {
                 AikaTextView!!.text = (p0 / 1000).toString()+"s"
             }
