@@ -126,19 +126,19 @@ class EasyGameActivity : AppCompatActivity() {
 
     private fun start() {
         NextQuestion(cals)
-        countDownTimer = object :CountDownTimer(60000,1000){
+        countDownTimer = object :CountDownTimer(10000,1000){
             override fun onTick(p0: Long) {
                 AikaTextView!!.text = (p0 / 1000).toString()+"s"
             }
 
             override fun onFinish() {
                 AikaTextView!!.text = "Aika Loppui!"
-                openDilog()
+                openDialog()
             }
         }.start()
     }
 
-    private fun openDilog() {
+    private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos,null)
         lopputulosTextView = winDialog.findViewById(R.id.lopputulosTextView)
@@ -168,10 +168,11 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-
-        buttonPlayAgain.setOnClickListener { PlayAgain(it) }
-        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()
+        buttonPlayAgain.setOnClickListener { PlayAgain(it)
+        showDialog.cancel()}
+        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
+
     }
 }
