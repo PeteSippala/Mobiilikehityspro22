@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="237dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/grinchedregular"
+        android:text="SpeedMath"
+        android:textColor="#010203"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/buttonLoginNow"
         android:layout_width="wrap_content"

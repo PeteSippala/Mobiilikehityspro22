@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/buttonEasy"
-        android:layout_width="140dp"
-        android:layout_height="90dp"
+        android:layout_width="163dp"
+        android:layout_height="107dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#010203"
         android:fontFamily="sans-serif-medium"
@@ -36,23 +36,23 @@
 
     <Button
         android:id="@+id/buttonMid"
-        android:layout_width="140dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="162dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#010203"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Keskivaikea"
         android:textSize="18sp"
         app:cornerRadius="2mm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEasy" />
 
     <Button
         android:id="@+id/buttonHard"
-        android:layout_width="140dp"
-        android:layout_height="90dp"
+        android:layout_width="160dp"
+        android:layout_height="108dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="#010203"
         android:fontFamily="sans-serif-medium"
@@ -60,14 +60,13 @@
         android:textSize="20sp"
         app:cornerRadius="2mm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonMid" />
 
     <Button
         android:id="@+id/buHardcore"
-        android:layout_width="152dp"
-        android:layout_height="103dp"
+        android:layout_width="176dp"
+        android:layout_height="116dp"
         android:layout_marginStart="139dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="140dp"
@@ -79,9 +78,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonHard"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.396" />
 
     <Button
         android:id="@+id/buttonSignOut"

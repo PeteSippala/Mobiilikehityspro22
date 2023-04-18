@@ -49,6 +49,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="15dp"
+            android:foreground="@drawable/punainennn"
             android:src="@drawable/pluss" />
 
         <ImageView
@@ -56,6 +57,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="15dp"
+            android:foreground="@drawable/punainennnn"
             android:src="@drawable/miinus" />
     </LinearLayout>
 
@@ -71,6 +73,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="15dp"
+            android:foreground="@drawable/punainenn"
             android:src="@drawable/kertolasku" />
 
         <ImageView
@@ -78,6 +81,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="15dp"
+            android:foreground="@drawable/punainen"
             android:src="@drawable/jako" />
 
     </LinearLayout>
