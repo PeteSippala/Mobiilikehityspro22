@@ -133,12 +133,12 @@ class EasyGameActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 AikaTextView!!.text = "Aika Loppui!"
-                openDilog()
+                openDialog()
             }
         }.start()
     }
 
-    private fun openDilog() {
+    private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos,null)
         lopputulosTextView = winDialog.findViewById(R.id.lopputulosTextView)
@@ -168,10 +168,11 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-
-        buttonPlayAgain.setOnClickListener { PlayAgain(it) }
-        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()
+        buttonPlayAgain.setOnClickListener { PlayAgain(it)
+        showDialog.cancel()}
+        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
+
     }
 }
