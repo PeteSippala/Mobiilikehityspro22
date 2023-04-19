@@ -134,7 +134,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         }
         if (wrongAnswers >= 3){
             AikaTextView!!.text = "väärin!"
-            openDilog()
+            openDialog()
         }
         PisteTextView!!.text = "$points"
         NextQuestion(cals)
@@ -156,13 +156,13 @@ class HardcoreGameActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 AikaTextView!!.text = "Aika Loppui!"
-                openDilog()
+                openDialog()
             }
 
         }.start()
     }
 
-    private fun openDilog() {
+    private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos_hardcore,null)
         lopputulosTextView = winDialog.findViewById(R.id.lopputulosTextView)
@@ -192,12 +192,12 @@ class HardcoreGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        buttonPlayAgain.setOnClickListener {
-            PlayAgain(it)
-        }
-        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
         val showDialog = dialog.create()
         showDialog.show()
+        buttonPlayAgain.setOnClickListener { PlayAgain(it)
+            showDialog.cancel()}
+        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
+
         buttonBack.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
