@@ -26,10 +26,10 @@ class MidGameActivity : AppCompatActivity() {
     var button3 :Button? = null
     var countDownTimer :CountDownTimer? = null
     var random :Random = Random
-    var a = 0.0
-    var b = 0.0
+    var a = 0
+    var b = 0
     var indexOfCorrectAnswer = 0
-    var answers = ArrayList<Double>()
+    var answers = ArrayList<Int>()
     var points = 0
     var totalQuestions = 0
     var cals = ""
@@ -55,11 +55,9 @@ class MidGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextDouble(20.0)
-        b = random.nextDouble(20.0)
-        val RA: Double = String.format("%.1f",a).toDouble()
-        val RB: Double = String.format("%.1f",b).toDouble()
-        QuestionTextText!!.text="$RA $cal $RB"
+        a = random.nextInt(10)
+        b = random.nextInt(10)
+        QuestionTextText!!.text="$a $cal $b"
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
@@ -71,30 +69,19 @@ class MidGameActivity : AppCompatActivity() {
                     "+"->{answers.add(a+b)}
                     "-"->{answers.add(a-b)}
                     "*"->{answers.add(a*b)}
-                    "÷"->{
-                        try {
-                            answers.add(a/b)
-                        }
-                        catch (e:java.lang.Exception){
-                            e.printStackTrace()
-                        }
-                    }
-
                 }
             }
             else{
-                var wrongAnswer = random.nextDouble(20.0)
+                var wrongAnswer = random.nextInt(30)
                 try{
                     while(
                         wrongAnswer == a+b
                         || wrongAnswer == a-b
                         || wrongAnswer == a*b
-                        || wrongAnswer == a/b
                     ){
-                        wrongAnswer =random.nextDouble(20.0)
+                        wrongAnswer =random.nextInt(30)
                     }
-                    val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
-                    answers.add(WA)
+                    answers.add(wrongAnswer)
                 }
                 catch (e:Exception){
                     e.printStackTrace()
@@ -161,7 +148,7 @@ class MidGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
-        if (points < 5) {
+        if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
             }
@@ -171,7 +158,7 @@ class MidGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        if (points > 15) {
+        if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
             }

@@ -42,14 +42,5 @@ class MidActivity : AppCompatActivity() {
             calInt.putExtra("cals", "*")
             startActivity(calInt)
         }
-        binding.jako.setOnClickListener {
-            val calInt = Intent(
-                this@MidActivity,
-                MidGameActivity::class.java
-            )
-
-            calInt.putExtra("cals", "÷")
-            startActivity(calInt)
-        }
     }
 }

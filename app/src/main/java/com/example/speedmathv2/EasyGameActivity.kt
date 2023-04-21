@@ -148,7 +148,7 @@ class EasyGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
-        if (points < 5) {
+        if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
             }
@@ -158,7 +158,7 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        if (points > 15) {
+        if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
             }

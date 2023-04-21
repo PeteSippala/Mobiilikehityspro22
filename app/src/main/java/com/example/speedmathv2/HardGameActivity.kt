@@ -55,8 +55,8 @@ class HardGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextDouble(50.0)
-        b = random.nextDouble(50.0)
+        a = random.nextDouble(20.0)
+        b = random.nextDouble(20.0)
         val RA: Double = String.format("%.1f",a).toDouble()
         val RB: Double = String.format("%.1f",b).toDouble()
         QuestionTextText!!.text="$RA $cal $RB"
@@ -68,12 +68,12 @@ class HardGameActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-                    "+"->{answers.add(a+b)}
-                    "-"->{answers.add(a-b)}
-                    "*"->{answers.add(a*b)}
+                    "+"->{answers.add(RA+RB)}
+                    "-"->{answers.add(RA-RB)}
+                    "*"->{answers.add(RA*RB)}
                     "÷"->{
                         try {
-                            answers.add(a/b)
+                            answers.add(RA/RB)
                         }
                         catch (e:java.lang.Exception){
                             e.printStackTrace()
@@ -83,15 +83,15 @@ class HardGameActivity : AppCompatActivity() {
                 }
             }
             else{
-                var wrongAnswer = random.nextDouble(20.0)
+                var wrongAnswer = random.nextDouble(100.0)
                 try{
                     while(
-                        wrongAnswer == a+b
-                        || wrongAnswer == a-b
-                        || wrongAnswer == a*b
-                        || wrongAnswer == a/b
+                        wrongAnswer == RA+RB
+                        || wrongAnswer == RA-RB
+                        || wrongAnswer == RA*RB
+                        || wrongAnswer == RA/RB
                     ){
-                        wrongAnswer =random.nextDouble(20.0)
+                        wrongAnswer =random.nextDouble(100.0)
                     }
                     val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
                     answers.add(WA)
@@ -161,7 +161,7 @@ class HardGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
-        if (points < 5) {
+        if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
             }
@@ -171,7 +171,7 @@ class HardGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        if (points > 15) {
+        if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
             }

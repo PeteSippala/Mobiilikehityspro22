@@ -71,12 +71,12 @@ class HardcoreGameActivity : AppCompatActivity() {
             if (indexOfCorrectAnswer == i){
 
                 when(cal){
-                    "+"->{answers.add(a+b)}
-                    "-"->{answers.add(a-b)}
-                    "*"->{answers.add(a*b)}
+                    "+"->{answers.add(RA+RB)}
+                    "-"->{answers.add(RA-RB)}
+                    "*"->{answers.add(RA*RB)}
                     "÷"->{
                         try {
-                            answers.add(a/b)
+                            answers.add(RA/RB)
                         }
                         catch (e:java.lang.Exception){
                             e.printStackTrace()
@@ -89,10 +89,10 @@ class HardcoreGameActivity : AppCompatActivity() {
                 var wrongAnswer = random.nextDouble(20.0)
                 try{
                     while(
-                        wrongAnswer == a+b
-                        || wrongAnswer == a-b
-                        || wrongAnswer == a*b
-                        || wrongAnswer == a/b
+                        wrongAnswer == RA+RB
+                        || wrongAnswer == RA-RB
+                        || wrongAnswer == RA*RB
+                        || wrongAnswer == RA/RB
                     ){
                         wrongAnswer =random.nextDouble(20.0)
                     }
@@ -172,7 +172,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
-        if (points < 5) {
+        if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
             }
@@ -182,7 +182,7 @@ class HardcoreGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        if (points > 15) {
+        if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
             }
