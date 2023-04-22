@@ -195,7 +195,9 @@ class HardcoreGameActivity : AppCompatActivity() {
         val showDialog = dialog.create()
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)
-            showDialog.cancel()}
+            showDialog.cancel()
+        mediaPlayer.stop()
+        wrongAnswers = 0}
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
 
         buttonBack.setOnClickListener{
