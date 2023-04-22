@@ -58,8 +58,8 @@ class HardcoreGameActivity : AppCompatActivity() {
     }
 
     fun NextQuestion(cal:String){
-        a = random.nextDouble(50.0)
-        b = random.nextDouble(50.0)
+        a = random.nextDouble(20.0)
+        b = random.nextDouble(20.0)
         val RA: Double = String.format("%.1f",a).toDouble()
         val RB: Double = String.format("%.1f",b).toDouble()
         QuestionTextText!!.text="$RA $cal $RB"
@@ -86,7 +86,7 @@ class HardcoreGameActivity : AppCompatActivity() {
                 }
             }
             else{
-                var wrongAnswer = random.nextDouble(20.0)
+                var wrongAnswer = random.nextDouble(100.0)
                 try{
                     while(
                         wrongAnswer == RA+RB
@@ -94,7 +94,7 @@ class HardcoreGameActivity : AppCompatActivity() {
                         || wrongAnswer == RA*RB
                         || wrongAnswer == RA/RB
                     ){
-                        wrongAnswer =random.nextDouble(20.0)
+                        wrongAnswer =random.nextDouble(100.0)
                     }
                     val WA: Double = String.format("%.1f",wrongAnswer).toDouble()
                     answers.add(WA)
@@ -196,12 +196,20 @@ class HardcoreGameActivity : AppCompatActivity() {
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)
             showDialog.cancel()
-        mediaPlayer.stop()
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
         wrongAnswers = 0}
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
 
         buttonBack.setOnClickListener{
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
         }
     }}

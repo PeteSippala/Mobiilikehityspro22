@@ -184,10 +184,18 @@ class HardGameActivity : AppCompatActivity() {
         val showDialog = dialog.create()
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
             showDialog.cancel()}
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
 
         buttonBack.setOnClickListener{
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

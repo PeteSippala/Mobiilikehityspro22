@@ -172,9 +172,18 @@ class MidGameActivity : AppCompatActivity() {
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)
             showDialog.cancel()}
-        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
+        buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed()
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
+        }
 
         buttonBack.setOnClickListener{
+            if (mediaPlayer.isPlaying) {
+                mediaPlayer.pause()
+                mediaPlayer.seekTo(0)
+            }
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
