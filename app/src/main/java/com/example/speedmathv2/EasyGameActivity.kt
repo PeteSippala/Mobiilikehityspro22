@@ -16,6 +16,7 @@ import kotlin.math.round
 
 class EasyGameActivity : AppCompatActivity() {
 
+    // Luodaan ja alustetaan muuttujat
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
     var PisteTextView :TextView? = null
@@ -55,8 +56,9 @@ class EasyGameActivity : AppCompatActivity() {
 
 
     }
+    // Luodaan lasku toimitus, kaksi satunnaista numeroa +,-,*
+    // samalla luodaan myös 4 vastausta, joista 1 on oikein.
 
-    //luodaan uusi lasku
     fun NextQuestion(cal:String){
         a = random.nextInt(50)
         b = random.nextInt(50)
@@ -104,23 +106,24 @@ class EasyGameActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
-
-    //jos oikein vastaus, niin lisätään piste
+    // Funktio, kun vastaus on oikein tai väärin
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
             points++
             AlertTextView!!.text = "Correct"
+            // VAstaus oikein, saat pisteen
 
         }
-        //jos väärin, niin miinustetaan
         else{
             points--
             AlertTextView!!.text = "Wrong"
+            // VAstaus väärin, menetät pisteen
         }
         PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
+    // Funktio aloittaa pelin uudelleen, alustaen pisteet ja ajan
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
@@ -128,7 +131,7 @@ class EasyGameActivity : AppCompatActivity() {
         countDownTimer!!.start()
     }
 
-    //alustetaan alkava peli
+    // Funtio joka aloittaa pelin
     private fun start() {
         NextQuestion(cals)
         countDownTimer = object :CountDownTimer(60000,1000){
@@ -142,6 +145,7 @@ class EasyGameActivity : AppCompatActivity() {
             }
         }.start()
     }
+    // funktio kun peli loppuu, avaa activity_tulos
 
     private fun openDialog() {
         val inflate = LayoutInflater.from(this)
@@ -153,6 +157,7 @@ class EasyGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
+        // jos pisteitä alle 10, alkaa soimaan sirkusmusiikki
         if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
@@ -163,6 +168,7 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+        // jos pisteitä yli 10, alkaa soimaan gigachad
         if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
@@ -173,7 +179,6 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
-        //jos haluaa pelata uudelleen
         val showDialog = dialog.create()
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)

@@ -15,6 +15,7 @@ import kotlin.math.round
 
 class HardGameActivity : AppCompatActivity() {
 
+    // Luodaan ja alustetaan muuttujat
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
     var PisteTextView :TextView? = null
@@ -54,6 +55,8 @@ class HardGameActivity : AppCompatActivity() {
 
     }
 
+    // Luodaan lasku toimitus, kaksi satunnaista numeroa +,-,*,÷
+    // samalla luodaan myös 4 vastausta, joista 1 on oikein.
     fun NextQuestion(cal:String){
         a = random.nextDouble(20.0)
         b = random.nextDouble(20.0)
@@ -63,6 +66,7 @@ class HardGameActivity : AppCompatActivity() {
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
+
 
         for (i in 0..3){
             if (indexOfCorrectAnswer == i){
@@ -82,6 +86,7 @@ class HardGameActivity : AppCompatActivity() {
 
                 }
             }
+            // Luodaan toiminto kun vastaus on väärin
             else{
                 var wrongAnswer = random.nextDouble(100.0)
                 try{
@@ -104,6 +109,7 @@ class HardGameActivity : AppCompatActivity() {
 
 
         }
+        // Vastaus laatikot
 
         try {
             button0!!.text = "${answers[0]}"
@@ -116,27 +122,30 @@ class HardGameActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
+    // Luodaan toiminto kun vastaus menee oikein tai väärin.
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
 
-            points++
+            points++ // saat pisteen kun vastaus on oikein
             AlertTextView!!.text = "Correct"
         }
         else{
-            points--
+            points-- // menetät pisteen kun vastaus on väärin
             AlertTextView!!.text = "Wrong"
         }
         PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
+    // funktion Aloittaa pelin uudelleen, pisteet ja aika alustetaan
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
         PisteTextView!!.text = "$points"
         countDownTimer!!.start()
     }
-
+// funktio Aloittaa pelin
     private fun start() {
         NextQuestion(cals)
         countDownTimer = object :CountDownTimer(60000,1000){
@@ -150,7 +159,7 @@ class HardGameActivity : AppCompatActivity() {
             }
         }.start()
     }
-
+// Funktio joka aukaisee activity_tulos kun peli loppuu
     private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos,null)
@@ -161,6 +170,7 @@ class HardGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
+    //  jos pisteitä on alle 10 kuuluu sirkus musiikki
         if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
@@ -171,6 +181,7 @@ class HardGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+    //jos pisteitä on alle 10 kuuluu Gigachad musiikki
         if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)

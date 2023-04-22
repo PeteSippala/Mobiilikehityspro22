@@ -17,6 +17,7 @@ import kotlin.system.exitProcess
 
 class HardcoreGameActivity : AppCompatActivity() {
 
+    //Alustetaan ja luodaan muuttujat
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
     var PisteTextView :TextView? = null
@@ -57,6 +58,8 @@ class HardcoreGameActivity : AppCompatActivity() {
 
     }
 
+    // Luodaan lasku toimitus, kaksi satunnaista numeroa +,-,*,÷
+    // samalla luodaan myös 4 vastausta, joista 1 on oikein.
     fun NextQuestion(cal:String){
         a = random.nextDouble(50.0)
         b = random.nextDouble(50.0)
@@ -66,6 +69,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         indexOfCorrectAnswer = random.nextInt(4)
 
         answers.clear()
+        // Funktion kun vastaus menee väärin tai oikein
 
         for (i in 0..3){
             if (indexOfCorrectAnswer == i){
@@ -120,17 +124,20 @@ class HardcoreGameActivity : AppCompatActivity() {
         }
     }
 
+    // Funktio kun vastaus menee väärin tai oikein
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
             points++
             AlertTextView!!.text = "Correct"
+            // Vastaus oikein, saa pisteen
 
         }
         else{
             points--
             wrongAnswers++
             AlertTextView!!.text = "Wrong"
+            // Vastaus väärin, menettää pisteen
         }
         if (wrongAnswers >= 3){
             AikaTextView!!.text = "väärin!"
@@ -140,6 +147,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         NextQuestion(cals)
     }
 
+    // Funktio, joka aloittaa pelin uudellee, alustaen pisteet ja ajan.
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
@@ -147,6 +155,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         countDownTimer!!.start()
     }
 
+    // Funktio, joka aloittaa pelin
     private fun start() {
         NextQuestion(cals)
         countDownTimer = object :CountDownTimer(60000,1000){
@@ -161,7 +170,7 @@ class HardcoreGameActivity : AppCompatActivity() {
 
         }.start()
     }
-
+    // Funktio joka aukaisee activity_tulos kun peli loppuu
     private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos_hardcore,null)
@@ -172,6 +181,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
+        //  jos pisteitä on alle 10 kuuluu sirkus musiikki
         if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
@@ -182,6 +192,7 @@ class HardcoreGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+        //jos pisteitä on alle 10 kuuluu Gigachad musiikki
         if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
@@ -195,9 +206,7 @@ class HardcoreGameActivity : AppCompatActivity() {
         val showDialog = dialog.create()
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)
-            showDialog.cancel()
-        mediaPlayer.stop()
-        wrongAnswers = 0}
+            showDialog.cancel()}
         buttonBack.setOnClickListener{ onBackPressedDispatcher.onBackPressed() }
 
         buttonBack.setOnClickListener{

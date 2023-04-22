@@ -15,6 +15,7 @@ import kotlin.math.round
 
 class MidGameActivity : AppCompatActivity() {
 
+    // Luodaan ja alustetaan muuttujan
     var AikaTextView :TextView? = null
     var QuestionTextText :TextView? = null
     var PisteTextView :TextView? = null
@@ -54,6 +55,8 @@ class MidGameActivity : AppCompatActivity() {
 
     }
 
+    // Luodaan lasku toimitus, kaksi satunnaista numeroa +,-,*
+    // samalla luodaan myös 4 vastausta, joista 1 on oikein.
     fun NextQuestion(cal:String){
         a = random.nextInt(10)
         b = random.nextInt(10)
@@ -103,20 +106,24 @@ class MidGameActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+    // funktio kun vastaus menee oikein tai väärin
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
 
             points++
             AlertTextView!!.text = "Correct"
+            // Vastaus oikein, saat pisteen
         }
         else{
             points--
             AlertTextView!!.text = "Wrong"
+            // Vastaus väärin, menetät pisteen
         }
         PisteTextView!!.text = "$points"
         NextQuestion(cals)
     }
+    //funktio aloittaa pelin uudelleen, alustaen psiteet ja ajan
     fun PlayAgain(view:View?){
         points = 0
         totalQuestions = 0
@@ -124,6 +131,7 @@ class MidGameActivity : AppCompatActivity() {
         countDownTimer!!.start()
     }
 
+    // Funktio aloittaa pelin
     private fun start() {
         NextQuestion(cals)
         countDownTimer = object :CountDownTimer(60000,1000){
@@ -137,7 +145,7 @@ class MidGameActivity : AppCompatActivity() {
             }
         }.start()
     }
-
+    // Funktio joka aukaisee activity_tulos kun peli loppuu
     private fun openDialog() {
         val inflate = LayoutInflater.from(this)
         val winDialog = inflate.inflate(R.layout.activity_tulos,null)
@@ -148,6 +156,7 @@ class MidGameActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         lopputulosTextView!!.text ="$points"
+        //  jos pisteitä on alle 10 kuuluu sirkus musiikki
         if (points < 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.circus)
@@ -158,6 +167,7 @@ class MidGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+        //jos pisteitä on alle 10 kuuluu Gigachad musiikki
         if (points > 10) {
             if (!this::mediaPlayer.isInitialized) {
                 mediaPlayer = MediaPlayer.create(this, R.raw.gigachad)
