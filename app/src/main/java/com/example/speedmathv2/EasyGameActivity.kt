@@ -56,6 +56,7 @@ class EasyGameActivity : AppCompatActivity() {
 
     }
 
+    //luodaan uusi lasku
     fun NextQuestion(cal:String){
         a = random.nextInt(50)
         b = random.nextInt(50)
@@ -103,6 +104,8 @@ class EasyGameActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
+    //jos oikein vastaus, niin lisätään piste
     fun optionselect(view:View?){
         totalQuestions++
         if (indexOfCorrectAnswer.toString() == view!!.tag.toString()){
@@ -110,6 +113,7 @@ class EasyGameActivity : AppCompatActivity() {
             AlertTextView!!.text = "Correct"
 
         }
+        //jos väärin, niin miinustetaan
         else{
             points--
             AlertTextView!!.text = "Wrong"
@@ -124,6 +128,7 @@ class EasyGameActivity : AppCompatActivity() {
         countDownTimer!!.start()
     }
 
+    //alustetaan alkava peli
     private fun start() {
         NextQuestion(cals)
         countDownTimer = object :CountDownTimer(60000,1000){
@@ -168,6 +173,7 @@ class EasyGameActivity : AppCompatActivity() {
             }
             mediaPlayer.start()
         }
+        //jos haluaa pelata uudelleen
         val showDialog = dialog.create()
         showDialog.show()
         buttonPlayAgain.setOnClickListener { PlayAgain(it)

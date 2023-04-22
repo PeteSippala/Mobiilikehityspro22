@@ -14,7 +14,7 @@ class HardActivity : AppCompatActivity() {
         binding = ActivityHardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        //valitaan plus laskut
         binding.plus.setOnClickListener {
             val calInt = Intent(
                 this@HardActivity,
@@ -24,6 +24,7 @@ class HardActivity : AppCompatActivity() {
             calInt.putExtra("cals", "+")
             startActivity(calInt)
         }
+        //valitaan miinus
         binding.miinus.setOnClickListener {
             val calInt = Intent(
                 this@HardActivity,
@@ -33,6 +34,7 @@ class HardActivity : AppCompatActivity() {
             calInt.putExtra("cals", "-")
             startActivity(calInt)
         }
+        //valitaan kerto
         binding.kerto.setOnClickListener {
             val calInt = Intent(
                 this@HardActivity,
@@ -42,6 +44,7 @@ class HardActivity : AppCompatActivity() {
             calInt.putExtra("cals", "*")
             startActivity(calInt)
         }
+        //valitaan jako
         binding.jako.setOnClickListener {
             val calInt = Intent(
                 this@HardActivity,

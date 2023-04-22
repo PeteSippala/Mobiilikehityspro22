@@ -13,7 +13,7 @@ class EasyActivity : AppCompatActivity() {
         binding = ActivityEasyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        //jos valitaan plus laskut
         binding.plus.setOnClickListener{
             val calInt = Intent(this@EasyActivity,
                 EasyGameActivity::class.java)
@@ -21,6 +21,7 @@ class EasyActivity : AppCompatActivity() {
             calInt.putExtra("cals","+")
             startActivity(calInt)
         }
+        //jos valitaan miinuslaskut
         binding.miinus.setOnClickListener{
             val calInt = Intent(this@EasyActivity,
                 EasyGameActivity::class.java)
