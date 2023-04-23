@@ -8,3 +8,4 @@ Projektia tehtiin ryhmätyöskentelynä, jossa kaikki osallistui koodaamiseen, l
 ##### Kuinka voit asentaa ja käyttää projektin koodia
 Lataa sovellus GitHubis:ta, esimerkiksi Zip-tiedostona. Pura Zip tiedosto, sen ladattua, ja aukaise purattu tiedosto Android Studiossa. Android Studiossa sinun tulee valita Virtuaalinen Android-Emulaattori, jolla käynnistät sovelluksen.
 ###### Projektin materiaali
+Demovideo: https://youtu.be/6D39hNqUbwQ
